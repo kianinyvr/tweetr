@@ -8,6 +8,8 @@ $(function() {
 
   loadTweets();
 
+
+
   function createTweetElement(tweet){
 
     // var name = tweet["user"].name;
@@ -18,9 +20,8 @@ $(function() {
     var handle = tweet["user"].handle;
     var content = tweet["content"].text;
     var avatar = tweet["user"].avatars.small;
-    console.log(content);
-
     var $article = $('<article class="tweet"/>');
+
     // var $someelement = $('<div class="someelement"/>').appendTo('#container');
     $('.all_tweets').prepend($article);
 
@@ -28,7 +29,10 @@ $(function() {
     var $img = $('<img>').attr('src', avatar);
     var $h2 = $('<h2></<h2>').text(name);
     var $h1 = $('<h1></h1>').text(handle);
-
+    var $dateDiv = $('<div class="date">').text(moment(new Date(tweet.created_at)).startOf('hour').fromNow());
+    var $flag = $('<i class="fa fa-flag" aria-hidden="true"></i>');
+    var $retweet = $('<i class="fa fa-retweet" aria-hidden="true"></i>');
+    var $like = $('<i class="fa fa-heart" aria-hidden="true"></i>');
 
     $header.appendTo($article)
       .append($img)
@@ -36,11 +40,19 @@ $(function() {
       .append($h1);
 
 
-    $("<div>").appendTo($article)
+    $("<div class='content'>").appendTo($article)
       .text(content);
     $("<footer>").appendTo($article)
-      .append("<div>");
+      .append($dateDiv)
+      .append($like)
+      .append($retweet)
+      .append($flag)
+
   };
+
+
+
+
 
 function renderTweets(tweets) {
   console.log("IN RENDER TWEETS");
