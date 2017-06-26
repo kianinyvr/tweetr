@@ -4,7 +4,7 @@ Tweeter is a simple, single-page Twitter clone. It allows users to create tweets
 
 ## Screenshots
 
-![public/images/tweeter_homepage.png] "Homepage")
+!["Homepage"](public/images/tweeter_homepage.png)
 
 ## Dependencies
 
